@@ -1,0 +1,22 @@
+{
+  "kind": "evm_project",
+  "token": {
+    "contract": "LaunchToken",
+    "name": "Badges",
+    "symbol": "BDGE",
+    "decimals": 18
+  },
+  "contracts": [
+    {
+      "contract": "SoulboundBadges",
+      "constructorArgs": ["$token"]
+    }
+  ],
+  "pool": {
+    "pairedCurrency": "0x0000000000000000000000000000000000000000",
+    "fee": 3000,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "notes": "Sepolia test toy: badges are not credentials. LaunchToken has no constructor arguments. SoulboundBadges is fully configured with the launch token address, has no owner or admin, and requires no initialization calls or token funding at deployment. Creating a badge type requires an ERC-20 allowance for 100 BDGE, transferred directly from the creator to the dead address. Badges are nontransferable; only their holders may burn them. The pool pairs BDGE with native ETH and has no hook. The factory supplies liquidity and the MerkleDistributor. The initialPrice is decimal sqrtPriceX96; the deployer derives the effective opening price from the pinned policy when it specifies initialMarketCapWei. Policy, authorization and signed artifact linkage are supplied by services."
+}
